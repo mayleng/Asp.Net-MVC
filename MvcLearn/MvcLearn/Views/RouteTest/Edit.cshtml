@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+<p>路由规则在App_Start/RouteConfig.cs文件中修改</p>
+<p>通过路由规则传递过来参数：@ViewBag.Id</p>
+<p>当访问如下网址时“http://ip:port/RouteTest/Edit/345”
+    便会请求RouteTest/Edit，345作为id参数的值传递到该页面的action。</p>
+<a href="~/2016-3">请求Show页面</a>

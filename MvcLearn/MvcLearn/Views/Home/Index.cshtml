@@ -1,0 +1,52 @@
+﻿@using MvcLearn.Models   @*引入命名空间*@
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@{ 
+    int a1 = 10;
+    Response.Write(a1);
+}
+<br/>
+@a1  <!-- 可以通过上面的response输出，也可以这样直接输出-->
+<br/>
+
+@for(int i=0;i<=10;i++){
+    if (i % 2 == 0)
+    {
+        @i<br/>  <!--输出i的值   客户端注释-->
+    }
+}
+
+@*这是注释  服务端注释*@
+<!--支持C#和HTML混合编写。HTML里面可以加C#，C#里面可以写HTML-->
+
+@{ 
+    People p = new People();
+    p.Age = 15;
+}
+@p.Age  ;
+<hr />
+
+<p>该页面的Index.cshtml的源码主要讲解Razor和C#的混合编程相关</p>
+<a href="~/Home/HtmlTest">Home下的HTMLTest页面</a>&nbsp; &nbsp; &nbsp;
+<a href="~/Home/ShowTest">Home下的Show页面</a>&nbsp;&nbsp;
+
+
+
+<hr/>
+<p>TestController下的index页面是行为的详解</p>
+<a href="~/Test/Index">Test下的Index页面</a>&nbsp;&nbsp;
+
+<hr/>
+<p>RouteTestController下的Edit页面主要讲解路由规则</p>
+<a href="~/RouteTest/Edit/345">Route下的Edit页面</a>&nbsp;&nbsp;
+
+<hr/>
+<p>AsyncController下主要讲异步</p>
+<a href="~/Async/Index">Async下的Index页面</a>&nbsp;&nbsp;
+
+<hr/>
+<p>访问区域下的页面。区域的路由在区域中自定义。</p>
+<a href="~/News/New/Index">News区域下的Index页面</a>&nbsp;&nbsp;

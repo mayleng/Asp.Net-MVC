@@ -1,0 +1,48 @@
+﻿<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+    <!-- Ajaxhelper主要通过引用如下包-->
+    <!--Asp.NET MVC 5 中默认没有下面这个文件，通过
+        Install-Package jQuery –version 1.10.2
+        Install-Package Microsoft.jQuery.Unobtrusive.Ajax –version 3.0.0
+        安装后scripts文件夹中便有了这个包。
+        -->
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+    <!--定义一个回调函数-->
+    <script type="text/javascript">
+        function Success(obj) {
+            $('#result').val(obj.Sum);
+        }
+    </script>
+</head>
+
+<body>
+    <h2>Show</h2>
+    <p>这里使用MVC的特有的Ajaxhelper来实现异步。</p>
+
+    @using (Ajax.BeginForm("CalAdd1", "Async", new AjaxOptions()
+    {       
+       // OnBegin = "alert('开始请求');",
+        // OnSuccess方法会调用行为的返回值
+        OnSuccess = "Success",
+        OnFailure= "alert('请求失败');",
+
+    }))
+    {
+        <input type="text" name="calc1" />
+        <span> +</span>
+        <input type="text" name="calc2" />
+        <input type="submit" value="=" />
+        <input type="text" id="result" />
+    }
+
+
+
+
+
+</body>
+</html>

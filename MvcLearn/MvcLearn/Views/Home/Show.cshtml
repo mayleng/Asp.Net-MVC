@@ -1,0 +1,48 @@
+﻿@model MvcLearn.Models.Store
+ <!--上面一句使页面成为强类型-->
+
+<html>
+<head>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</head>
+
+<body>
+<h2>Show</h2>
+<p>该页面只是用来测试跳转到特定的视图。相关源码看controller中
+    的ShowTest行为。</p>
+<div>this is show page！ </div>
+
+<hr/>
+<p>校验：为了确保数据的有效性。还需要引入几个js的脚本。
+    在head里有引入。只有引入这三个脚本才能做校验功能。
+    这里的校验是跟服务端关联的。相关源码看controller中
+    的Show行为。</p>
+<p>下面的表单用来添加数据。对数据进行校验。</p>
+@using (Html.BeginForm("Show", "Home", FormMethod.Post))
+{
+    @Html.TextBoxFor(p=>p.Id)
+    @Html.ValidationMessageFor(p=>p.Id)
+    <br/>
+    @Html.TextBoxFor(p => p.Name)
+    <br/>
+    <input type="submit" value="添加"/>
+}
+
+<hr/>
+ <p>也可以自己在客户端封装js代码来验证数据。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

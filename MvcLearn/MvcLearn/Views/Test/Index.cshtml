@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<p>TestController下的index</p>
+
+
+    <p>
+        TestCotroller 的源码中讲解关于行为的一些功能和
+        使用方法。
+    </p>
+
+<hr/>
+    <a href="@Url.Action("ParamRecv","Test")?id=20">添加1</a>
+    <br/>
+
+    <!--下面的代码创建一个表单，向ParamRec发送post请求-->
+    <p>下面表单的数据提交到ParamRec行为</p>
+    @using(Html.BeginForm("ParamRecv", "Test", FormMethod.Post))
+    {
+        @Html.TextBox("id")
+        <br/>
+        <input type="submit"/>
+    }
+<br/>
+<a href="~/Test/AddPerson">AddPerson页面</a>
+
+
+
+
+

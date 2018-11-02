@@ -1,0 +1,70 @@
+﻿@model MvcLearn.Models.People   
+@{
+    ViewBag.Title = "HtmlTest";
+}
+
+<h2>HtmlTest</h2>
+<p>该页面的页面源码和action主要讲解HtmlHelper使用，
+    用来创建表单相关的方法</p>
+<div>
+<a href="/home/index">超链接1</a>  <!--路径中的action和controller都是小写-->
+<br/>
+<a href="@Url.Action("Index","Home")">超链接2</a>
+    @*因为默认的路由是/home/index所以在页面查看源码路径显示为/*@
+<!--因为路由规则可以改，所以一般不用第一种写法，写固定的url。
+    而是通过方法。填写action名和controller名。
+    -->
+<br />
+@Html.ActionLink("超链接3","ShowTest","Home")
+</div>
+<hr/>
+
+@Html.Raw("输出……")   @*在页面特定位置输出任何内容*@
+<br/>
+@{ 
+    string a1 = "shuchu.....";
+}
+@a1                     @*这种只能输出一个变量*@
+<hr/>
+
+@{
+    string temp1 = "<b>123</b>";    @*<b>123</b>整体作为一个字符串，不会解析为HTML*@
+}
+@temp1
+<br/>
+@Html.Encode(temp1)  @*将<>编码*@
+<hr />
+
+表单控件(输入框)<br />
+@*将表单的数据传送给/home/showtest  action*@
+@using (Html.BeginForm("ShowTest", "Home", FormMethod.Post))
+{
+    @Html.TextBox("uname")
+}
+@Html.Label("用户名")
+@Html.TextBox("uname")
+@Html.Hidden("AA")    <!--隐藏域-->
+<br/><br/>
+<!--后续用这种方法写表单，不要自己一点一点的写-->
+<!--没有提交按钮、按钮的封装  只能自己手写-->
+<input type="button" value="按钮"/>
+<input type="submit"  value="submit"/><br />
+@ViewData["zhh"]   @*输出controller中传递过来的值*@  &nbsp;
+@ViewData["ww"]    &nbsp;
+@ViewBag.ww
+@Html.TextBox("zhh") @*会自动先去ViewData中取值，有自动获取*@
+<br/>
+@Html.DropDownList("downlists")@*下拉列表*@    <br />
+<hr/>
+自己直接写表单内容容易写错，这样通过引入固定的页面model。
+将页面构成强类型,通过引入MvcLearn.Models.People的model，下面的
+表单都是该people类型。再次填写表单内容会自动从model中引用。
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    @Html.TextBoxFor(c => c.Age)
+}
+如果一个页面有多个类型，将多个类型封装成一个类型再调用。
+<br/>
+@ViewData.Model.Age
+@ViewData.Model.QQ
+@Model.QQ      @*是上面一句的简写*@

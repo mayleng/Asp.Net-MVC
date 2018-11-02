@@ -1,0 +1,21 @@
+﻿@model MvcLearn.Models.People
+<!--上面一句使页面转成强类型页面，使用Model时有智能提示-->
+@{
+    ViewBag.Title = "AddPerson";
+}
+
+<h2>AddPerson</h2>
+<p>该页面主要用来提交表单。和AddPerson1页面一同展示
+    自动装配自定义的类型。（自定义的对象传递）</p>
+<hr/>
+<p>在AddPerson行为中直接接收一个对象(自定义类型)作为参数。</p>
+@using(Html.BeginForm("AddPerson", "Test", FormMethod.Post))
+{
+    <span>年龄：</span>
+    @Html.TextBoxFor(p => p.Age);
+    <br/>
+    <span>QQ：</span>
+    @Html.TextBoxFor(p => p.QQ);
+    <br/>
+       <input type="submit" value="提交">
+}

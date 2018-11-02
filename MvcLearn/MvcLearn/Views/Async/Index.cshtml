@@ -1,0 +1,52 @@
+﻿
+<html>
+<head>
+    <!--下面引入jquery-->
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+    <!--这里通过jquery来实现异步-->
+    <script>
+        $(function () {
+            $('#btnAdd').click(function () {
+                $.post(
+                    '@Url.Action("CalAdd", "Async")',
+                    $('#form1').serialize(),
+                    function (msg) {
+                        $('#sum').val(msg);
+                    }
+
+                );
+            });
+        });
+
+    </script>
+</head>
+
+
+
+<body>
+   
+<h2>Index</h2>
+<p>该页面相关的请求主要讲解异步。</p>
+
+<p>CalAdd行为主要讲解通过jquery实现异步。jquery依赖在Scripts文件
+    夹下jquery-1.10.2.min.js文件。</p>
+<hr/>
+<p>下面的form表单提交数据给CalAdd行为：</p>
+<div>
+    <form id="form1">
+        <input type="text" name="calc1" />+
+        <input type="text"  name="calc2" />
+        <input type="button"  id="btnAdd" value="加" />
+        <input type="text" name="sum" id="sum" />
+    </form>
+  
+
+</div>
+
+<br/>
+<span>Show页面使用Ajaxhelper来实现异步：</span>
+<a href="~/Async/Show">Show页面</a>
+
+</body>
+</html>
